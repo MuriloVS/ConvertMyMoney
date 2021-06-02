@@ -1,0 +1,30 @@
+body {
+  text-align: center;
+}
+
+h1 img {
+  width: 489px;
+  margin: 20px;
+}
+
+input {
+  margin-bottom: 10px;
+  border: 1px solid #000000;
+  background: #fdfdfd;
+  font-size: 24px;
+  padding: 4px;
+}
+
+button {
+  border: 1px solid #000000;
+  font-size: 24px;
+  background: #d8d8d8;
+  padding: 10px;
+}
+
+.result {
+  font-size: 24px;
+  padding: 10px;
+  border: 1px solid #000000;
+  background: #fdfdfd;
+}
