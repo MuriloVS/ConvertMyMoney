@@ -19,14 +19,20 @@ app.get('/cotacao', (req, res) => {
   const { cotacao, quantidade } = req.query;
   const cotacaoFormatada = cotacao.replace(',', '.');
   const quantidadeFormatada = quantidade.replace(',', '.');
-  const resultado = convert.convert(cotacaoFormatada, quantidadeFormatada);
 
-  if (resultado) {
-    res.render('cotacao', {
-      cotacao: convert.toMoney(cotacaoFormatada),
-      quantidade: convert.toMoney(quantidadeFormatada),
-      resultado: convert.toMoney(resultado),
-    });
+  if (!isNaN(cotacaoFormatada) && !isNaN(quantidadeFormatada)) {
+    const resultado = convert.convertedValue(
+      cotacaoFormatada,
+      quantidadeFormatada
+    );
+
+    if (resultado) {
+      res.render('cotacao', {
+        cotacao: convert.toMoney(cotacaoFormatada),
+        quantidade: convert.toMoney(quantidadeFormatada),
+        resultado: convert.toMoney(resultado),
+      });
+    }
   }
 });
 
