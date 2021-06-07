@@ -17,26 +17,20 @@ app.get('/', async (req, res) => {
 
 app.get('/cotacao', (req, res) => {
   const { cotacao, quantidade } = req.query;
-  const cotacaoFormatada = cotacao.replace(',', '.');
-  const quantidadeFormatada = quantidade.replace(',', '.');
 
-  if (!isNaN(cotacaoFormatada) && !isNaN(quantidadeFormatada)) {
-    const resultado = convert.convertedValue(
-      cotacaoFormatada,
-      quantidadeFormatada
-    );
+  if (!isNaN(cotacao) && !isNaN(quantidade)) {
+    const resultado = convert.convertedValue(cotacao, quantidade);
 
     if (resultado) {
       res.render('cotacao', {
-        cotacao: convert.toMoney(cotacaoFormatada),
-        quantidade: convert.toMoney(quantidadeFormatada),
+        cotacao: convert.toMoney(cotacao),
+        quantidade: convert.toMoney(quantidade),
         resultado: convert.toMoney(resultado),
       });
     }
   }
 });
 
-// aplicação ouvindo na porta 3000
 app.listen(3000, (err) => {
   if (err) {
     console.log(err);

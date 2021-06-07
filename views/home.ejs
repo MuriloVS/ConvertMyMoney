@@ -2,17 +2,21 @@
 <form action="/cotacao" method="GET">
   <input
     placeholder="Cotação dólar"
-    type="text"
+    type="number"
+    step="0.0001"
+    min="0"
     name="cotacao"
     value="<%= valor %>"
     required
   /><br />
   <input
     placeholder="Quantidade"
-    type="text"
+    type="number"
+    step="0.01"
+    min="0"
     name="quantidade"
     required
   /><br />
-  <button>Converter!</button>
+  <button class="pure-button">Converter</button>
 </form>
 <%- include('footer') %>
